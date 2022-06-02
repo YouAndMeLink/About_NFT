@@ -1,236 +1,313 @@
-# Welcome to nft-app 👋
+# wpahjr 👄
 
-![Version](https://img.shields.io/badge/version-0.0.1-blue.svg?cacheSeconds=2592000)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
-[![Twitter: jellydn](https://img.shields.io/twitter/follow/jellydn.svg?style=social)](https://twitter.com/jellydn)
+![](https://github.com/HashLips/hashlips_art_engine/blob/main/logo.png)
 
-> How to create your own NFT token
+All the code in these repos was created and explained by HashLips on the main YouTube channel.
 
-## 🏠 [Homepage](https://nft-app.productsway.com)
+To find out more please visit:
 
-## ✨ [Demo](https://nft-app-demo.productsway.com)
+[📺 YouTube](https://www.youtube.com/channel/UC1LV4_VQGBJHTJjEWUmy8nA)
 
-![https://gyazo.com/fccacc5f480839196343bf95728c9b6a.gif](https://gyazo.com/fccacc5f480839196343bf95728c9b6a.gif)
+[👄 Discord](https://discord.com/invite/qh6MWhMJDN)
 
-## Screenshot
+[💬 Telegram](https://t.me/hashlipsnft)
 
-![screenshot1.png](./screenshot1.png)
+[🐦 Twitter](https://twitter.com/hashlipsnft)
 
-![screenshot2.png](./screenshot2.png)
+[ℹ️ Website](https://hashlips.online/HashLips)
 
-## Features
+# HashLips Art Engine 🔥
 
-- ⚡️ React TypeScript template with [Vite 2](https://vitejs.dev/)
-- 📦 [Hardhat](https://hardhat.org/) - Ethereum development environment for professionals
-- 🦾 [TypeChain Hardhat plugin](https://github.com/ethereum-ts/TypeChain/tree/master/packages/hardhat) - Automatically generate TypeScript bindings for smartcontracts while using Hardhat.
-- 🔥 [web3-react](https://github.com/NoahZinsmeister/web3-react/) - A simple, maximally extensible, dependency minimized framework for building modern Ethereum dApps
-- 🎨 [daisyUI Tailwind CSS Components](https://daisyui.com/) - clean HTML with component classes
-- 🎨 [OpenZeppelin](https://docs.openzeppelin.com/contracts/4.x/) - standard for secure blockchain applications
+![](https://github.com/HashLips/hashlips_art_engine/blob/main/banner.png)
 
-## Install
+Create generative art by using the canvas api and node js. Before you use the generation engine, make sure you have node.js(v10.18.0) installed.
+
+## Installation 🛠️
+
+If you are cloning the project then run this first, otherwise you can download the source code on the release page and skip this step.
+
+```sh
+git clone https://github.com/HashLips/hashlips_art_engine.git
+```
+
+Go to the root of your folder and run this command if you have yarn installed.
 
 ```sh
 yarn install
 ```
 
-## Usage
-
-### Run Web App
+Alternatively you can run this command if you have node installed.
 
 ```sh
-# Prepare .env file
-# Run web site
-cp .env.example .env
-npx hardhat compile --network localhost
-yarn dev
-
+npm install
 ```
 
-### Run API App
+## Usage ℹ️
 
-```sh
-# Prepare .env file
-# Run web site
-cd server
-cp .env.example .env
-yarn install
-yarn dev
+Create your different layers as folders in the 'layers' directory, and add all the layer assets in these directories. You can name the assets anything as long as it has a rarity weight attached in the file name like so: `example element#70.png`. You can optionally change the delimiter `#` to anything you would like to use in the variable `rarityDelimiter` in the `src/config.js` file.
 
+Once you have all your layers, go into `src/config.js` and update the `layerConfigurations` objects `layersOrder` array to be your layer folders name in order of the back layer to the front layer.
+
+_Example:_ If you were creating a portrait design, you might have a background, then a head, a mouth, eyes, eyewear, and then headwear, so your `layersOrder` would look something like this:
+
+```js
+const layerConfigurations = [
+  {
+    growEditionSizeTo: 100,
+    layersOrder: [
+      { name: "Head" },
+      { name: "Mouth" },
+      { name: "Eyes" },
+      { name: "Eyeswear" },
+      { name: "Headwear" },
+    ],
+  },
+];
 ```
 
-## Run tests
+The `name` of each layer object represents the name of the folder (in `/layers/`) that the images reside in.
 
-```sh
-yarn test
+Optionally you can now add multiple different `layerConfigurations` to your collection. Each configuration can be unique and have different layer orders, use the same layers or introduce new ones. This gives the artist flexibility when it comes to fine tuning their collections to their needs.
+
+_Example:_ If you were creating a portrait design, you might have a background, then a head, a mouth, eyes, eyewear, and then headwear and you want to create a new race or just simple re-order the layers or even introduce new layers, then you're `layerConfigurations` and `layersOrder` would look something like this:
+
+```js
+const layerConfigurations = [
+  {
+    // Creates up to 50 artworks
+    growEditionSizeTo: 50,
+    layersOrder: [
+      { name: "Background" },
+      { name: "Head" },
+      { name: "Mouth" },
+      { name: "Eyes" },
+      { name: "Eyeswear" },
+      { name: "Headwear" },
+    ],
+  },
+  {
+    // Creates an additional 100 artworks
+    growEditionSizeTo: 150,
+    layersOrder: [
+      { name: "Background" },
+      { name: "Head" },
+      { name: "Eyes" },
+      { name: "Mouth" },
+      { name: "Eyeswear" },
+      { name: "Headwear" },
+      { name: "AlienHeadwear" },
+    ],
+  },
+];
 ```
 
-## Deploy NFT to Rinkeby
+Update your `format` size, ie the outputted image size, and the `growEditionSizeTo` on each `layerConfigurations` object, which is the amount of variation outputted.
 
-This example, we will deploy to Rinkeby network. If you do not have `hardhat` [shorthand](https://hardhat.org/guides/shorthand.html), then please run
+You can mix up the `layerConfigurations` order on how the images are saved by setting the variable `shuffleLayerConfigurations` in the `config.js` file to true. It is false by default and will save all images in numerical order.
 
-```sh
-npm i -g hardhat-shorthand
-hardhat-completion install
+If you want to have logs to debug and see what is happening when you generate images you can set the variable `debugLogs` in the `config.js` file to true. It is false by default, so you will only see general logs.
+
+If you want to play around with different blending modes, you can add a `blend: MODE.colorBurn` field to the layersOrder `options` object.
+
+If you need a layers to have a different opacity then you can add the `opacity: 0.7` field to the layersOrder `options` object as well.
+
+If you want to have a layer _ignored_ in the DNA uniqueness check, you can set `bypassDNA: true` in the `options` object. This has the effect of making sure the rest of the traits are unique while not considering the `Background` Layers as traits, for example. The layers _are_ included in the final image.
+
+To use a different metadata attribute name you can add the `displayName: "Awesome Eye Color"` to the `options` object. All options are optional and can be addes on the same layer if you want to.
+
+Here is an example on how you can play around with both filter fields:
+
+```js
+const layerConfigurations = [
+  {
+    growEditionSizeTo: 5,
+    layersOrder: [
+      { name: "Background" , {
+        options: {
+          bypassDNA: false;
+        }
+      }},
+      { name: "Eyeball" },
+      {
+        name: "Eye color",
+        options: {
+          blend: MODE.destinationIn,
+          opacity: 0.2,
+          displayName: "Awesome Eye Color",
+        },
+      },
+      { name: "Iris" },
+      { name: "Shine" },
+      { name: "Bottom lid", options: { blend: MODE.overlay, opacity: 0.7 } },
+      { name: "Top lid" },
+    ],
+  },
+];
 ```
 
-1.Deploy MyAwesomeLogo to Rinkeby
+Here is a list of the different blending modes that you can optionally use.
 
-```sh
-hh run scripts/deploy.ts --network rinkeby
+```js
+const MODE = {
+  sourceOver: "source-over",
+  sourceIn: "source-in",
+  sourceOut: "source-out",
+  sourceAtop: "source-out",
+  destinationOver: "destination-over",
+  destinationIn: "destination-in",
+  destinationOut: "destination-out",
+  destinationAtop: "destination-atop",
+  lighter: "lighter",
+  copy: "copy",
+  xor: "xor",
+  multiply: "multiply",
+  screen: "screen",
+  overlay: "overlay",
+  darken: "darken",
+  lighten: "lighten",
+  colorDodge: "color-dodge",
+  colorBurn: "color-burn",
+  hardLight: "hard-light",
+  softLight: "soft-light",
+  difference: "difference",
+  exclusion: "exclusion",
+  hue: "hue",
+  saturation: "saturation",
+  color: "color",
+  luminosity: "luminosity",
+};
 ```
 
-Output:
+When you are ready, run the following command and your outputted art will be in the `build/images` directory and the json in the `build/json` directory:
 
 ```sh
-Generating typings for: 0 artifacts in dir: src/types for target: ethers-v5
-Successfully generated 3 typings!
-Successfully generated 3 typings for external artifacts!
-MyAwesomeLogo deployed to: 0x39a5079afE9F3e3bB4db1B943e2063AC3dc87251
-owner 0x096cd10D7BEF8D5923b18b18E9f79CA230ee2285
+npm run build
 ```
 
-2. Mint some NFT tokens
+or
 
 ```sh
-hh run scripts/mint.ts --network rinkeby
+node index.js
 ```
 
-Output:
+The program will output all the images in the `build/images` directory along with the metadata files in the `build/json` directory. Each collection will have a `_metadata.json` file that consists of all the metadata in the collection inside the `build/json` directory. The `build/json` folder also will contain all the single json files that represent each image file. The single json file of a image will look something like this:
 
-```sh
-Generating typings for: 0 artifacts in dir: src/types for target: ethers-v5
-Successfully generated 3 typings!
-Successfully generated 3 typings for external artifacts!
-MyAwesomeLogo deployed to: 0x39a5079afE9F3e3bB4db1B943e2063AC3dc87251
-Name MyAwesomeLogo
-Symbol MAL
-Uploaded file to nft storage Token {
-  ipnft: 'bafyreib22oziqft7cbakshc374mwctwiprzyj24ufpeogkjff3lroumcru',
-  url: 'ipfs://bafyreib22oziqft7cbakshc374mwctwiprzyj24ufpeogkjff3lroumcru/metadata.json'
+```json
+{
+  "dna": "d956cdf4e460508b5ff90c21974124f68d6edc34",
+  "name": "#1",
+  "description": "This is the description of your NFT project",
+  "image": "https://hashlips/nft/1.png",
+  "edition": 1,
+  "date": 1731990799975,
+  "attributes": [
+    { "trait_type": "Background", "value": "Black" },
+    { "trait_type": "Eyeball", "value": "Red" },
+    { "trait_type": "Eye color", "value": "Yellow" },
+    { "trait_type": "Iris", "value": "Small" },
+    { "trait_type": "Shine", "value": "Shapes" },
+    { "trait_type": "Bottom lid", "value": "Low" },
+    { "trait_type": "Top lid", "value": "Middle" }
+  ],
+  "compiler": "HashLips Art Engine"
 }
-Minted NFT 0x0aad3903cb8d11f095babdc7ba47963ad6235b0a3cd5d32ee42560798816235a
-Uploaded file to nft storage Token {
-  ipnft: 'bafyreid3gvwkltwkgvpxur3eozuh6dirfg2ohqizhn4rpn764dji272aoe',
-  url: 'ipfs://bafyreid3gvwkltwkgvpxur3eozuh6dirfg2ohqizhn4rpn764dji272aoe/metadata.json'
-}
-Minted NFT 0xe1ed7be02639310cf101b495e55d27421be018cc12cd90d1f46547c627b5132c
-Uploaded file to nft storage Token {
-  ipnft: 'bafyreieealfw66zppxhkivuti5qkmsuihjxgxgrxdfm2o5p4qna5l347bu',
-  url: 'ipfs://bafyreieealfw66zppxhkivuti5qkmsuihjxgxgrxdfm2o5p4qna5l347bu/metadata.json'
-}
-Minted NFT 0x183af6b95464305aa5f9f0ed97a5b8847bd168bbb28e3f6368d04662a44cb8fc
 ```
 
-3.Verify with etherscan.io
+You can also add extra metadata to each metadata file by adding your extra items, (key: value) pairs to the `extraMetadata` object variable in the `config.js` file.
+
+```js
+const extraMetadata = {
+  creator: "Daniel Eugene Botha",
+};
+```
+
+If you don't need extra metadata, simply leave the object empty. It is empty by default.
+
+```js
+const extraMetadata = {};
+```
+
+That's it, you're done.
+
+## Utils
+
+### Updating baseUri for IPFS and description
+
+You might possibly want to update the baseUri and description after you have ran your collection. To update the baseUri and description simply run:
 
 ```sh
-hh verify --network rinkeby 0x39a5079afE9F3e3bB4db1B943e2063AC3dc87251
+npm run update_info
 ```
 
-Output:
+### Generate a preview image
+
+Create a preview image collage of your collection, run:
 
 ```sh
-Nothing to compile
-Generating typings for: 0 artifacts in dir: src/types for target: ethers-v5
-Successfully generated 3 typings!
-Successfully generated 3 typings for external artifacts!
-Compiling 1 file with 0.8.4
-Successfully submitted source code for contract
-contracts/MyAwesomeLogo.sol:MyAwesomeLogo at 0x39a5079afE9F3e3bB4db1B943e2063AC3dc87251
-for verification on Etherscan. Waiting for verification result...
-
-Successfully verified contract MyAwesomeLogo on Etherscan.
-https://rinkeby.etherscan.io/address/0x39a5079afE9F3e3bB4db1B943e2063AC3dc87251#code
+npm run preview
 ```
 
-## Hardhat guideline
+### Generate pixelated images from collection
 
-This project demonstrates an advanced Hardhat use case, integrating other tools commonly used alongside Hardhat in the ecosystem.
+In order to convert images into pixelated images you would need a list of images that you want to convert. So run the generator first.
 
-The project comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts. It also comes with a variety of other tools, preconfigured to work with the project code.
+Then simply run this command:
 
-Try running some of the following tasks:
-
-```shell
-npx hardhat accounts
-npx hardhat compile --network localhost
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-npx hardhat help
-REPORT_GAS=true npx hardhat test
-npx hardhat coverage
-npx hardhat run scripts/deploy_greeter.js --network localhost
-node scripts/deploy.js
-npx eslint '**/*.js'
-npx eslint '**/*.js' --fix
-npx prettier '**/*.{json,sol,md}' --check
-npx prettier '**/*.{json,sol,md}' --write
-npx solhint 'contracts/**/*.sol'
-npx solhint 'contracts/**/*.sol' --fix
+```sh
+npm run pixelate
 ```
 
-## Etherscan verification
+All your images will be outputted in the `/build/pixel_images` directory.
+If you want to change the ratio of the pixelation then you can update the ratio property on the `pixelFormat` object in the `src/config.js` file. The lower the number on the left, the more pixelated the image will be.
 
-To try out Etherscan verification, you first need to deploy a contract to an Ethereum network that's supported by Etherscan, such as Ropsten.
-
-In this project, copy the .env.example file to a file named .env, and then edit it to fill in the details. Enter your Etherscan API key, your Ropsten node URL (eg from Alchemy), and the private key of the account which will send the deployment transaction. With a valid .env file in place, first deploy your contract:
-
-```shell
-npx hardhat run --network ropsten scripts/deploy_greeter.js
+```js
+const pixelFormat = {
+  ratio: 5 / 128,
+};
 ```
 
-Then, copy the deployment address and paste it in to replace `DEPLOYED_CONTRACT_ADDRESS` in this command:
+### Generate GIF images from collection
 
-```shell
-npx hardhat verify --network ropsten DEPLOYED_CONTRACT_ADDRESS "Hello, Hardhat!"
+In order to export gifs based on the layers created, you just need to set the export on the `gif` object in the `src/config.js` file to `true`. You can also play around with the `repeat`, `quality` and the `delay` of the exported gif.
+
+Setting the `repeat: -1` will produce a one time render and `repeat: 0` will loop forever.
+
+```js
+const gif = {
+  export: true,
+  repeat: 0,
+  quality: 100,
+  delay: 500,
+};
 ```
 
-## Contract upgrade
+### Printing rarity data (Experimental feature)
 
-OpenZeppelin provides tooling for deploying and securing [upgradeable smart contracts](https://docs.openzeppelin.com/learn/upgrading-smart-contracts).
+To see the percentages of each attribute across your collection, run:
 
-Smart contracts deployed using OpenZeppelin Upgrades Plugins can be upgraded to modify their code, while preserving their address, state, and balance. This allows you to iteratively add new features to your project, or fix any bugs you may find in production.
-
-In this project, there are a 2 versions of contract: Box and BoxV2 which is improvement of Box. First deploy your contract:
-
-```shell
-npx hardhat run --network localhost scripts/deploy_upgradeable_box.js
+```sh
+npm run rarity
 ```
 
-Then, deploy the upgrade smart contract
+The output will look something like this:
 
-```shell
-npx hardhat run --network localhost scripts/upgrade_box.js
+```sh
+Trait type: Top lid
+{
+  trait: 'High',
+  chance: '30',
+  occurrence: '3 in 20 editions (15.00 %)'
+}
+{
+  trait: 'Low',
+  chance: '20',
+  occurrence: '3 in 20 editions (15.00 %)'
+}
+{
+  trait: 'Middle',
+  chance: '50',
+  occurrence: '14 in 20 editions (70.00 %)'
+}
 ```
 
-## Examples
-
-- [Simple Store App](https://github.com/jellydn/nft-app/pull/20): counter-like smart contract, read/write value and listen to event from smart contract.
-- [ICO Token App](https://github.com/jellydn/dapp-token-ico): How to create An ERC20 token and implement ICO smart contract (CrowdSale).
-
-## One click deployment
-
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/6ZY4MT?referralCode=-GINmA)
-
-## Author
-
-👤 **Dung Huynh**
-
-- Website: https://productsway.com/
-- Twitter: [@jellydn](https://twitter.com/jellydn)
-- Github: [@jellydn](https://github.com/jellydn)
-
-## Stargazers 🌟
-
-[![Stargazers repo roster for jellydn/nft-app](https://reporoster.com/stars/jellydn/nft-app)](https://github.com/jellydn/nft-app/stargazers)
-
-## Show your support
-
-Give a ⭐️ if this project helped you!
-
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Q5Q61Q7YM)
-
----
-
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
+Hope you create some awesome artworks with this code 👄
