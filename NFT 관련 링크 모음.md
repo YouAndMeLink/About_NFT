@@ -29,8 +29,7 @@
 
 # NFT 민팅 및 리스팅
 ***
-#### https://itmanual.net/nft-%eb%a7%8c%eb%93%a4%ea%b8%b0-%ed%8c%94%ea%b8%b0-nft-%eb%9c%bb%ea%b3%bc-%ec%9a%a9%ec%96%b4%ec%a0%95%eb%a6%ac/
-<br>
+#### * https://itmanual.net/nft-%eb%a7%8c%eb%93%a4%ea%b8%b0-%ed%8c%94%ea%b8%b0-nft-%eb%9c%bb%ea%b3%bc-%ec%9a%a9%ec%96%b4%ec%a0%95%eb%a6%ac/
 
 #### https://itmanual.net/nft-%eb%a7%8c%eb%93%a4%ea%b8%b0-%ed%8c%94%ea%b8%b0-nft-%ed%94%8c%eb%9e%ab%ed%8f%bc-%ec%84%a0%ed%83%9d-%eb%a9%94%ed%83%80%eb%a7%88%ec%8a%a4%ed%81%ac-%ec%a7%80%ea%b0%91-%ec%83%9d%ec%84%b1/
 <br>
