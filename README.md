@@ -30,6 +30,20 @@ NFT는 블록체인을 기반으로 하고 있어 소유권과 판매 이력 등
 
 <img src="https://user-images.githubusercontent.com/86152185/172037861-b7ff5d71-7baa-46b6-bc15-b0f8f9b10238.png" width="80%" height="">
 
+# 블록체인의 개념
+
+블록체인(blockchain)은 **분산 컴퓨팅 기술 기반의 데이터 위변조 방지 기술**이다. 여러 대의 컴퓨터가 기록을 검증하여 해킹을 막는 구조로 되어있다.</br>
+
+‘블록체인(Block Chain)’ 기술에서 블록(Block)에는 일정 시간 동안 확정된 거래 내역이 담긴다. 온라인에서 거래 내용이 담긴 블록이 형성되는 것이다. 거래 내역을 결정하는 주체는 사용자다. 이 블록은 네트워크에 있는 모든 참여자에게 전송된다. 참여자들은 해당 거래의 타당성 여부를 확인한다. 승인된 블록만이 기존 블록체인에 연결되면서 송금이 이루어진다. 신용 기반이 아니다. 시스템으로 네트워크를 구성, 제3자가 거래를 보증하지 않고도 거래 당사자끼리 가치를 교환할 수 있다는 것이 블록체인 구상이다.
+
+블록체인 기술을 처음 고안한 사람은 ‘사토시나카모토’라는 개발자다. 이는 전자 화폐 시스템인 비트코인을 개발하면서 생긴 문제점을 해결하면서 나온 부산물로, 해당 기술을 통해 비트 코인은 5년 만에 시가총액으로 세계 100대 화폐 안에 들어갈 정도로 성장했다. 그는 ‘비트코인: P2P 전자화폐 시스템’이라는 논문에서 비트코인을 전적으로 거래 당사자 사이에서만 오가는 전자화폐로 정의했다. P2P(Peer to Peer) 네트워크를 이용해 이중 지불을 막아 준다는 것이다. 즉, P2P 네트워크를 통해 이중 지불을 막는 데 쓰이는 기술이 바로 블록체인이다.
+
+</br>
+
+<img src="https://user-images.githubusercontent.com/86152185/172052979-f1c278e9-8ec8-4fe4-8db2-f2a5b96dfd49.png" width="100%" height="">
+
+<img src="https://mblogthumb-phinf.pstatic.net/MjAxODA0MTFfMjA1/MDAxNTIzNDE1MTAyNTQy.LFZvtZKGaNKeq_p6L2N0Puelsq-AAJ0eVIMgT_sx_Agg.d3FOS0rRkxN9VdPZo2OiJ7mIkG-HGgQX3TK4Ems7eocg.PNG.dhl_korea/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8_%EC%9D%B4%EB%9E%80.png?type=w800" width="100%" height="">
+
 # 특징
 
 **1. 쉽게 추적된다.**
