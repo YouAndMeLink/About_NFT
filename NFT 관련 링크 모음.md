@@ -1,6 +1,6 @@
 ## 🪢 NFT 토큰 생성
 ***
-#### - https://github.com/jellydn/nft-app
+- https://github.com/jellydn/nft-app
 #### https://github.com/Choi-Jinhong/NFT-Summary
 
 <br>
