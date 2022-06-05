@@ -6,8 +6,10 @@
 
 ***
 
-### 목차
-1. [NFT 제작부터 시장까지](https://github.com/YouAndMeLink/About_NFT/tree/main/NFT%20%EC%A0%9C%EC%9E%91%EB%B6%80%ED%84%B0%20%EC%8B%9C%EC%9E%A5%EA%B9%8C%EC%A7%80)
+### Contents
+1. [NFT 제작부터 시장까지](https://github.com/YouAndMeLink/About_NFT/tree/main/NFT%20%EC%A0%9C%EC%9E%91%EB%B6%80%ED%84%B0%20%EC%8B%9C%EC%9E%A5%EA%B9%8C%EC%A7%80)]
+   * NFT 제작부터 시장 현황이 궁금하다면 눌러주세요.
+   * PDF와 PPT자료를 확인하실 수 있어요!
 
 2. 데이터 정제
     * [댓글 데이터 감성 분석](https://github.com/movie-catcher/youtube-data-scraping#-%EA%B0%90%EC%84%B1-%EB%B6%84%EC%84%9D)
