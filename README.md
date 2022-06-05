@@ -6,10 +6,9 @@
 
 ***
 
-### Process
-1. [데이터 수집](https://github.com/movie-catcher/youtube-data-scraping)
-   1. KOBIS 영화 기본 정보 스크래핑
-   2. 영화와 관련된 유튜브 영상 정보 수집
+### 목차
+1. [NFT 제작부터 시장까지](https://github.com/YouAndMeLink/About_NFT/tree/main/NFT%20%EC%A0%9C%EC%9E%91%EB%B6%80%ED%84%B0%20%EC%8B%9C%EC%9E%A5%EA%B9%8C%EC%A7%80)
+
 2. 데이터 정제
     * [댓글 데이터 감성 분석](https://github.com/movie-catcher/youtube-data-scraping#-%EA%B0%90%EC%84%B1-%EB%B6%84%EC%84%9D)
     * [transformation](https://github.com/movie-catcher/data-analysis#data-transformation)
