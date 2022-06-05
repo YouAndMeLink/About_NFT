@@ -1,3 +1,13 @@
+## 🪢 NFT 용어 정리
+***
+- https://news.sktelecom.com/176795
+<br>
+
+## 🪢 NFT에 대해
+***
+- https://blog.toss.im/article/nft-study-club-1
+<br>
+
 ## 🪢 NFT 토큰 생성
 ***
 - https://github.com/jellydn/nft-app
@@ -9,16 +19,6 @@
 ***
 - https://github.com/NotLuksus/nft-art-generator
 - https://github.com/AppsusUK/NFT-Art-Generator
-<br>
-
-## 🪢 NFT 용어 정리
-***
-- https://news.sktelecom.com/176795
-<br>
-
-## 🪢 NFT에 대해
-***
-- https://blog.toss.im/article/nft-study-club-1
 <br>
 
 ## 🪢 NFT 작품 거래소
@@ -38,5 +38,4 @@
 ## 🪢 NFT 제작
 ***
 - https://www.youtube.com/watch?v=IEOsoUiT_30
-
 <br>
